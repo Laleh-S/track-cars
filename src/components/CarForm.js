@@ -19,20 +19,29 @@
 // call 'changeName' it expects to recieve a payload. whatever we put inside the changeNmae is going to be our payload. The  
 // new Value that we want to assign to our name piece of state is gonna be 'event.target.value' which is what the user typed in.
 
-
+// Inside our cost input, there is a zero that we can't delete. 
 
 import { useDispatch, useSelector } from 'react-redux';
-import { changeName } from '../store'; 
+import { changeName, changeCost } from '../store'; 
 
 function CarForm() {
     const dispatch = useDispatch();
+    
     // we call our 'useSelector', pass in our selector function that is going to recieve our big 'state' object.
-    const name = useSelector((state) => {
-        return state.form.name  // getting the 'name' piece of state
+    const { name, cost } = useSelector((state) => {
+        return { // getting the 'name' and cost piece of state
+            name: state.form.name,  
+            cost: state.form.cost
+        }
     })
 
     const handleNameChange = (event) => {  // Notes above
-        dispatch(changeName(event.target.value))
+        dispatch(changeName(event.target.value));
+    };
+
+    const handleCostChange = (event) => {  // 
+        const carCost = parseInt(event.target.value) || 0 // -> '|| 0' makes sure carCost is always a number nd we get 'NaN' value.
+        dispatch(changeCost(carCost));
     };
     
     return (
@@ -42,12 +51,22 @@ function CarForm() {
                 <div className="field-group">
                     <div className="field">
                         <label className="label">Name</label>
-                        <input className="input is-expanded" 
-                        value={name}  // Notes above 
+                        <input className="input is-expanded" // Notes above
+                        value={name}   
                         onChange={handleNameChange}
                         />
                     </div>
+
+                    <div className="field">
+                        <label className="label">Cost</label>
+                        <input className="input is-expanded" 
+                        value={cost || ''}  // 'or empty string' sorts the issue with the 0 we cannot delete inside the cost input.
+                        onChange={handleCostChange}
+                        type='number'
+                        />
+                    </div>
                 </div>
+                
             </form>
         </div>
     )
