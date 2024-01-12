@@ -6,12 +6,6 @@
 // 5- Call the ”useDispatch” hook to get access to the dispatch function
 // 6- Whenever the user does something like running an event handler, call the action creator to get an action, then dispatch it.
 
-//* ACCESSING OUR STATE: --> Done many times per project whenever we want to access some state from inside of a component.
-// 1- Find the component that needs to access some state
-// 2- Import the "useSelector" hook from react-redux
-// 3- Call the "useSelector" hook, passing in the selector function
-// 4- Use the state! Any time state changes, the component will automatically rerender
-
 //* +++ IMPORTANT NOTE about STATE +++:
 // Whenever we refer to state inside of our slice, it means the state that this slice is in control of which in movieSlice
 // is the array of movies and in songSlice is he array of songs.
