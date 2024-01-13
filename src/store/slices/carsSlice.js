@@ -19,16 +19,15 @@ const carsSlice = createSlice({
             state.searchTerm = action.payload 
         },
         addCar(state, action) {
-            // We mutate cars by pushing a new car object to the cars array. 
-            // Assumption: whenever we call 'addCar', it will contain the 'name' and 'cost' of the car we want to add.
-            state.cars.push({
+            // Assumption: whenever we call 'addCar', it will contain a payload property with 'name' and 'cost' of the car we adding.
+            state.cars.push({  // pushing a new car object to the cars array. 
                 name: action.payload.name,
                 cost: action.payload.cost,
                 id: nanoid(),
             });
         },
         removeCar(state, action) {
-            // Assumption: whenever we call 'removeCar', it will contain the 'id' of the car we want to remove.
+            // Assumption: whenever we call 'removeCar', it will contain a payload property the 'id' of the car we are removing.
             const updated = state.cars.filter((car) => {
                 return car.id !== action.payload
             });
