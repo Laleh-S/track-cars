@@ -22,20 +22,18 @@
 // Inside our cost input, there is a zero that we can't delete. 
 
 
-
 import { useDispatch, useSelector } from 'react-redux';
 import { changeName, changeCost, addCar } from '../store'; 
 
 function CarForm() {
     const dispatch = useDispatch();
-    
     // we call our 'useSelector', pass in our selector function that is going to recieve our big 'state' object.
     const { name, cost } = useSelector((state) => {
         return { // getting the 'name' and cost piece of state
-            name: state.form.name,  
+            name: state.form.name,
             cost: state.form.cost
-        }
-    })
+        };
+    });
 
     const handleNameChange = (event) => {  // Notes above
         dispatch(changeName(event.target.value));
@@ -50,11 +48,11 @@ function CarForm() {
     // with 'name' and 'cost' of the car we are adding.
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(addCar({name: name, cost: cost}));    
+        dispatch(addCar({name: name, cost: cost}));  
     };
     
     return (
-        <div className="car-form">
+        <div className="car-form panel">
             <h4 className="subtitle is-3 ">Add Car</h4>
             <form onSubmit={handleSubmit}>
                 <div className="field-group">

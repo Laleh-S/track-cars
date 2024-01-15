@@ -1,6 +1,11 @@
+
 //* Note:
-// wherever we dispatch an action, we need to provide a payload because every single one of our reducers are always expecting
+// Whenever we try to change the name or cost, we need to know what the new name and new cost is gonna be. We're going to assume 
+// that the 'action.payload' property is gonna tell us what the new name and the new cost is going to be. that means that whenever 
+// we are going to update our name or our cost piece of state, We have to remember if we want to update our name or the cost, we 
+// need to dispatch an action that has a payload property. so wherever we dispatch an action, we need to provide a payload because every single one of our reducers are always expecting
 // a payload along with it.
+
 
 import { createSlice } from "@reduxjs/toolkit";
 

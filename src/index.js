@@ -4,11 +4,13 @@
 // 3- Import ”Provider” from the react-redux library into the root ”index.js” file.
 // 4- Wrap the App component with the provider, pass the ”store” as a prop called store to the Provider
 
+import 'bulma/css/bulma.css';
+import './styles.css'
 import React from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import App from "./App";
+import App from './App';
 
 const el = document.getElementById("root");
 const root = createRoot(el);
