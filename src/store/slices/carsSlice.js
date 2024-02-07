@@ -19,7 +19,7 @@ const carsSlice = createSlice({
     },
     reducers: {
         // When updating our "state" here, We dispatch an action with a payload property. This would be the new search term.
-        changesearchTerm(state, action) {
+        changeSearchTerm(state, action) {
             state.searchTerm = action.payload 
         },
         addCar(state, action) {
@@ -41,6 +41,6 @@ const carsSlice = createSlice({
 });
 
 export const carsReducer  = carsSlice.reducer;
-export const { changesearchTerm, addCar, removeCar } = carsSlice.actions;
+export const { changeSearchTerm, addCar, removeCar } = carsSlice.actions;
 
 
